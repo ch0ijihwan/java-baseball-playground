@@ -24,6 +24,7 @@ public class GuessNumber {
             Strike strike = new Strike(this.inputNumbers, this.randomNumbers);
             Ball ball = new Ball(this.inputNumbers, this.randomNumbers);
             if(strikeCount==3){
+                System.out.println("3 스트라이크!");
                 break;
             }
             System.out.println("볼: " + ball.countBall() + " 스트라이크 : " + strike.countStrike());
