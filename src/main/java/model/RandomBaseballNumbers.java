@@ -7,7 +7,6 @@ public class RandomBaseballNumbers {
     private static final int RANDOM_NUMBER_SIZE = 3;
     private static final int MAX_NUMBER = 9;
 
-    private List<String> randomBaseballNumber;
     private final Set<String> threeNumbers = new HashSet<>();
 
     public RandomBaseballNumbers() {
@@ -16,7 +15,7 @@ public class RandomBaseballNumbers {
         }
     }
 
-    public List<String> outRandomBaseball() {
-        return this.randomBaseballNumber = new ArrayList<>(this.threeNumbers);
+    public List<String> outRandomBaseballNumbers() {
+        return new ArrayList<>(this.threeNumbers);
     }
 }

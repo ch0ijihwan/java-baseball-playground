@@ -14,7 +14,7 @@ public class BaseballController {
     public void run() {
         checkInput = new CheckInput(Input.InputBaseballNumber());
         randomBaseballNumbers = new RandomBaseballNumbers();
-        guessNumber = new GuessNumber(checkInput.checkInputNumber(), randomBaseballNumbers.outRandomBaseball());
+        guessNumber = new GuessNumber(checkInput.checkInputNumber(), randomBaseballNumbers.outRandomBaseballNumbers());
         guessNumber.guessResult();
     }
 }
