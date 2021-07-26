@@ -23,14 +23,16 @@ public class GuessNumber {
         while (true) {
             Strike strike = new Strike(this.inputNumbers, this.randomNumbers);
             Ball ball = new Ball(this.inputNumbers, this.randomNumbers);
-            if(strikeCount==3){
+            strikeCount = strike.countStrike();
+
+            if (strikeCount == 3) {
                 System.out.println("3 스트라이크!");
                 break;
             }
+
             System.out.println("볼: " + ball.countBall() + " 스트라이크 : " + strike.countStrike());
             CheckInput checkInput = new CheckInput(Input.InputBaseballNumber());
             this.inputNumbers = checkInput.checkInputNumber();
-            strikeCount = strike.countStrike();
         }
     }
 }
