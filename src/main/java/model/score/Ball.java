@@ -16,10 +16,9 @@ public class Ball {
 
     public int countBall() {
         return (int) randomNumbers.stream()
-                .filter(ball -> inputNumbers.stream()
+                .filter(randomNumber -> inputNumbers.stream()
                         .anyMatch(Predicate
-                                .isEqual(ball))).count() - strike.countStrike();
-
+                                .isEqual(randomNumber))).count() - strike.countStrike();
     }
 }
 
