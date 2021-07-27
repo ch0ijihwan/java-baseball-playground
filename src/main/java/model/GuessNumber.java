@@ -3,12 +3,13 @@ package model;
 import model.score.Ball;
 import model.score.Strike;
 import view.Input;
+import view.Out;
 
 import java.util.List;
 
 public class GuessNumber {
     private List<String> inputNumbers;
-    private List<String> randomNumbers;
+    private final List<String> randomNumbers;
     private Strike strike;
     private Ball ball;
 
@@ -30,7 +31,7 @@ public class GuessNumber {
                 break;
             }
 
-            System.out.println("볼: " + ball.countBall() + " 스트라이크 : " + strike.countStrike());
+            Out.resultOut(ball.countBall(), strike.countStrike());
             CheckInput checkInput = new CheckInput(Input.InputBaseballNumber());
             this.inputNumbers = checkInput.checkInputNumber();
         }
