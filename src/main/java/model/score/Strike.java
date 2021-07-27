@@ -23,7 +23,11 @@ public class Strike {
     }
 
     boolean compareValues(int index) {
-        return this.inputNumbers.get(index).equals(randomNumbers.get(index));
+        return this
+                .inputNumbers
+                .get(index)
+                .equals(randomNumbers
+                        .get(index));
     }
 
     int booleanCount(boolean[] strikeCount) {
