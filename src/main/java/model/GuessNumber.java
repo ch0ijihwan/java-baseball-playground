@@ -1,9 +1,9 @@
 package model;
 
+import controller.BaseballController;
 import model.score.Ball;
 import model.score.Strike;
 import view.Input;
-import view.Out;
 
 import java.util.List;
 
@@ -12,8 +12,10 @@ public class GuessNumber {
     private final List<String> randomNumbers;
     private Strike strike;
     private Ball ball;
+    private  BaseballController baseballController;
 
     public GuessNumber(List<String> inputNumbers, List<String> randomNumbers) {
+        baseballController = new BaseballController();
         this.inputNumbers = inputNumbers;
         this.randomNumbers = randomNumbers;
     }
@@ -30,8 +32,7 @@ public class GuessNumber {
                 System.out.println("3 스트라이크!");
                 break;
             }
-
-            Out.resultOut(ball.countBall(), strike.countStrike());
+            baseballController.sendOut(ball.countBall(), strike.countStrike());
             CheckInput checkInput = new CheckInput(Input.InputBaseballNumber());
             this.inputNumbers = checkInput.checkInputNumber();
         }
