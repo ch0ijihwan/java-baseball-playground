@@ -4,6 +4,7 @@ import model.CheckInput;
 import model.GuessNumber;
 import model.RandomBaseballNumbers;
 import view.Input;
+import view.Out;
 
 public class BaseballController {
 
@@ -16,5 +17,9 @@ public class BaseballController {
         randomBaseballNumbers = new RandomBaseballNumbers();
         guessNumber = new GuessNumber(checkInput.checkInputNumber(), randomBaseballNumbers.outRandomBaseballNumbers());
         guessNumber.guessResult();
+    }
+    public void sendOut(int ball, int strike){
+        Out.resultOut(ball,strike);
+
     }
 }
