@@ -8,13 +8,12 @@ import view.Input;
 import java.util.List;
 
 public class GuessNumber {
-    private List<String> inputNumbers;
-    private final List<String> randomNumbers;
-    private Strike strike;
-    private Ball ball;
-    private  BaseballController baseballController;
+    private List<Number> inputNumbers;
+    private final List<Number> randomNumbers;
+    private final BaseballController baseballController;
+    EvaluationNumber checkInput;
 
-    public GuessNumber(List<String> inputNumbers, List<String> randomNumbers) {
+    public GuessNumber(List<Number> inputNumbers, List<Number> randomNumbers) {
         baseballController = new BaseballController();
         this.inputNumbers = inputNumbers;
         this.randomNumbers = randomNumbers;
@@ -24,17 +23,21 @@ public class GuessNumber {
         int strikeCount = 0;
 
         while (true) {
-            Strike strike = new Strike(this.inputNumbers, this.randomNumbers);
-            Ball ball = new Ball(this.inputNumbers, this.randomNumbers);
-            strikeCount = strike.countStrike();
+            strikeCount = Strike.countStrike(inputNumbers, randomNumbers);
 
-            if (strikeCount == 3) {
-                System.out.println("3 스트라이크!");
-                break;
-            }
-            baseballController.sendOut(ball.countBall(), strike.countStrike());
-            CheckInput checkInput = new CheckInput(Input.InputBaseballNumber());
+            if (isThreeStrike(strikeCount)) break;
+
+            baseballController.sendOut(Ball.countBall(inputNumbers, randomNumbers), Strike.countStrike(inputNumbers, randomNumbers));
+            checkInput = new EvaluationNumber(Input.InputBaseballNumber());
             this.inputNumbers = checkInput.checkInputNumber();
         }
+    }
+
+    boolean isThreeStrike(int strikeCount) {
+        if (strikeCount == 3) {
+            System.out.println("3 스트라이크!");
+            return true;
+        }
+        return false;
     }
 }
