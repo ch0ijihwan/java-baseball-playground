@@ -1,6 +1,10 @@
 package model;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class RandomBaseballNumbers {
     private static final Random RANDOM = new Random();
@@ -15,7 +19,8 @@ public class RandomBaseballNumbers {
         }
     }
 
-    public List<String> outRandomBaseballNumbers() {
-        return new ArrayList<>(this.threeNumbers);
+    public List<Number> outRandomBaseballNumbers() {
+        return this.threeNumbers.stream().map(value -> new Number(Integer.parseInt(value)))
+                .collect(Collectors.toList());
     }
 }
