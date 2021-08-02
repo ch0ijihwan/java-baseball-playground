@@ -11,10 +11,10 @@ public class InputNumbers {
 
     public InputNumbers(String value) {
         values = new LinkedHashSet<>();
-        int[] a = Arrays.stream(value.split("")).mapToInt(Integer::parseInt).toArray();
+        int[] numbers = Arrays.stream(value.split("")).mapToInt(Integer::parseInt).toArray();
 
         IntStream.range(0, 3)
-                .forEach(index -> values.add(new Number(a[index])));
+                .forEach(index -> values.add(new Number(numbers[index])));
     }
 
     public Set<Number> getInputNumbers() {
