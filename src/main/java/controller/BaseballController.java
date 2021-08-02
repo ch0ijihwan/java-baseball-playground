@@ -1,20 +1,20 @@
 package controller;
 
-import model.EvaluationNumber;
 import model.GuessNumber;
+import model.InputNumbers;
 import model.RandomBaseballNumbers;
 import view.Input;
 import view.Out;
 
 public class BaseballController {
-    private EvaluationNumber checkInput;
+    private InputNumbers checkInput;
     private RandomBaseballNumbers randomBaseballNumbers;
     private GuessNumber guessNumber;
 
     public void run() {
-        checkInput = new EvaluationNumber(Input.InputBaseballNumber());
+        checkInput = new InputNumbers(Input.InputBaseballNumber());
         randomBaseballNumbers = new RandomBaseballNumbers();
-        guessNumber = new GuessNumber(checkInput.getBaseballNumber(), randomBaseballNumbers.outRandomBaseballNumbers());
+        guessNumber = new GuessNumber(checkInput.getInputNumbers(), randomBaseballNumbers.getRandomBaseballNumbers());
         guessNumber.guessResult();
     }
 

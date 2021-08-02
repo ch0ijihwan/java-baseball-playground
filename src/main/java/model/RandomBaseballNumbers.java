@@ -1,17 +1,15 @@
 package model;
 
-import java.util.HashSet;
-import java.util.List;
+import java.util.LinkedHashSet;
 import java.util.Random;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class RandomBaseballNumbers {
     private static final Random RANDOM = new Random();
     private static final int RANDOM_NUMBER_SIZE = 3;
     private static final int MAX_NUMBER = 9;
 
-    private final Set<String> threeNumbers = new HashSet<>();
+    private final Set<Number> threeNumbers = new LinkedHashSet<>();
 
     public RandomBaseballNumbers() {
         while (threeNumbers.size() < RANDOM_NUMBER_SIZE) {
@@ -19,8 +17,7 @@ public class RandomBaseballNumbers {
         }
     }
 
-    public List<Number> outRandomBaseballNumbers() {
-        return this.threeNumbers.stream().map(value -> new Number(Integer.parseInt(value)))
-                .collect(Collectors.toList());
+    public Set<Number> getRandomBaseballNumbers() {
+        return this.threeNumbers;
     }
 }

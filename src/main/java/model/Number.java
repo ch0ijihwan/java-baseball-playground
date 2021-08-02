@@ -3,7 +3,7 @@ package model;
 import java.util.Objects;
 
 public class Number {
-    private final int number;
+    private int number;
 
     public Number(int number) {
         this.number = number;
@@ -18,7 +18,7 @@ public class Number {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Number that = (Number) o;
-        return number == that.number;
+        return this.number == that.number;
     }
 
     @Override
