@@ -1,24 +1,17 @@
 package model.score;
 
-import java.util.List;
+import model.Number;
+
+import java.util.Set;
 import java.util.function.Predicate;
 
 public class Ball {
-    List<String> inputNumbers;
-    List<String> randomNumbers;
-    Strike strike;
+    public static int countBall(Set<Number> inputNumbers, Set<Number> randomNumbers) {
 
-    public Ball(List<String> inputNumbers, List<String> randomNumbers) {
-        this.inputNumbers = inputNumbers;
-        this.randomNumbers = randomNumbers;
-        strike = new Strike(this.inputNumbers,this.randomNumbers);
-    }
-
-    public int countBall() {
-        return (int) randomNumbers.stream()
-                .filter(randomNumber -> inputNumbers.stream()
-                        .anyMatch(Predicate
-                                .isEqual(randomNumber))).count() - strike.countStrike();
+        return (int) (randomNumbers.stream()
+                .filter(randomNumber -> inputNumbers.stream().anyMatch(Predicate.isEqual(randomNumber)))
+                .count()
+                - Strike.countStrike(inputNumbers, randomNumbers));
     }
 }
 

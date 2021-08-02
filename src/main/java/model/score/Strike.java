@@ -1,42 +1,16 @@
 package model.score;
 
-import java.util.List;
+import model.Number;
+
+import java.util.Set;
 import java.util.stream.IntStream;
 
 public class Strike {
-    private final List<String> inputNumbers;
-    private final List<String> randomNumbers;
+    private static final int NUMBER_LENGTH = 3;
+    private static final int START = 0;
 
-
-    public Strike(List<String> inputNumbers, List<String> randomNumbers) {
-        this.inputNumbers = inputNumbers;
-        this.randomNumbers = randomNumbers;
-    }
-
-    public int countStrike() {
-        boolean[] strikeCount = new boolean[3];
-
-        IntStream.range(0, inputNumbers.size())
-                .forEach(index -> strikeCount[index] = compareValues(index));
-
-        return booleanCount(strikeCount);
-    }
-
-    boolean compareValues(int index) {
-        return this
-                .inputNumbers
-                .get(index)
-                .equals(randomNumbers
-                        .get(index));
-    }
-
-    int booleanCount(boolean[] strikeCount) {
-        int count = 0;
-        for (boolean strike : strikeCount) {
-            if (strike) {
-                count++;
-            }
-        }
-        return count;
+    public static int countStrike(Set<Number> inputNumbers, Set<Number> randomNumbers) {
+        return (int) IntStream.range(START, NUMBER_LENGTH)
+                .filter(index -> inputNumbers.toArray()[index].equals(randomNumbers.toArray()[index])).count();
     }
 }
