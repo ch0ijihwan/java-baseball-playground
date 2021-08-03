@@ -1,14 +1,12 @@
 package model;
 
 import java.util.LinkedHashSet;
-import java.util.Random;
 import java.util.Set;
 
-public class RandomBaseballNumbers {
-    private static final Random RANDOM = new Random();
-    private static final int RANDOM_NUMBER_SIZE = 3;
-    private static final int MAX_NUMBER = 9;
+import static util.RandomUtil.generateRandomNumber;
 
+public class RandomBaseballNumbers {
+    private static final int RANDOM_NUMBER_SIZE = 3;
     private final Set<Number> threeNumbers = new LinkedHashSet<>();
 
     public RandomBaseballNumbers() {
