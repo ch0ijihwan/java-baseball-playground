@@ -23,7 +23,6 @@ public class InputNumbers {
         if (!isValueSize()) {
             throw new IllegalArgumentException("입력수가 중복되는 수가 있거나, 3자리 이상입니다.");
         }
-        return this.values;
     }
 
     private boolean isValueSize() {
@@ -31,6 +30,6 @@ public class InputNumbers {
     }
 
     private String[] dividedVales(String values){
-        return values.split(" ");
+        return values.split("");
     }
 }
