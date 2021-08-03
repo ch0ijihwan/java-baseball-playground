@@ -18,6 +18,12 @@ public class Number {
         }
     }
 
+    private  void isBlank(String number){
+        if(number.equals("")){
+            throw  new NullPointerException("아무 값도 입력되지 않았습니다.");
+        }
+    }
+
     static void isNumber(String number) {
         if (!NUMBER_PATTERN.matcher(number).matches()) {
             throw new IllegalArgumentException("숫자가 아닙니다.");
