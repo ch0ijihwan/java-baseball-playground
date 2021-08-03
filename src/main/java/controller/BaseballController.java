@@ -3,8 +3,9 @@ package controller;
 import model.GuessNumber;
 import model.InputNumbers;
 import model.RandomBaseballNumbers;
-import view.Input;
 import view.Out;
+
+import static view.Input.InputBaseballNumber;
 
 public class BaseballController {
     private InputNumbers checkInput;
@@ -12,10 +13,10 @@ public class BaseballController {
     private GuessNumber guessNumber;
 
     public void run() {
-        checkInput = new InputNumbers(Input.InputBaseballNumber());
+        checkInput = new InputNumbers(InputBaseballNumber());
         randomBaseballNumbers = new RandomBaseballNumbers();
-        guessNumber = new GuessNumber(checkInput.getInputNumbers(), randomBaseballNumbers.getRandomBaseballNumbers());
-        guessNumber.guessResult();
+        guessNumber = new GuessNumber(checkInput, randomBaseballNumbers);
+        guessNumber.guess();
     }
 
     public void guessResult(int ball, int strike) {
