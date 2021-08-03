@@ -18,7 +18,11 @@ public class BaseballController {
         guessNumber.guessResult();
     }
 
-    public void sendOut(int ball, int strike) {
+    public void guessResult(int ball, int strike) {
         Out.resultOut(ball, strike);
+    }
+
+    public void threeStrike() {
+        Out.threeStrike();
     }
 }
