@@ -1,49 +1,37 @@
 package model.score;
 
-import org.junit.jupiter.api.BeforeEach;
+import model.Number;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.stream.Stream;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 class StrikeTest {
-    private Strike strike;
-
-    @BeforeEach
-    void setUp() {
-        List<String> inputNumbers = Arrays.asList("1", "2", "3");
-        List<String> randomNumbers = Arrays.asList("1", "2", "3");
-        strike = new Strike(inputNumbers, randomNumbers);
-    }
 
     @ParameterizedTest
-    @CsvSource(value = {"1 2 3,1 2 3,3","1 2 3,4 5 6,0", "1 2 5,1 2 4,2"})
-    void strikeCounts(String input, String randomNumbers, int expect) {
-
-
-        List<String> numbers1 = Arrays.asList(divValue(input));
-        List<String> numbers2 = Arrays.asList(divValue(randomNumbers));
-
-        strike = new Strike(numbers1, numbers2);
-
-        assertThat(strike.countStrike()).isEqualTo(expect);
+    @MethodSource("strikeCountParameterProvider")
+    @DisplayName("4가지 두 Set을 받아 스트라이크의 개수를 반환한다.")
+    public void getStrikeCount(Set<Number>inputNumbers, Set<Number> randomNumbers, int expect){
+        int count = Strike.countStrike(inputNumbers,randomNumbers);
+        assertThat(count).isEqualTo(expect);
     }
-
-    String[]  divValue(String value){
-        return value.split(" ");
+    static Stream<Arguments> strikeCountParameterProvider() {
+        return Stream.of(arguments(new LinkedHashSet<>(Arrays.asList(new Number("1"), new Number("2"), new Number("3"))),
+                        new LinkedHashSet<>(Arrays.asList(new Number("1"), new Number("2"), new Number("3"))), 3),
+                arguments(new LinkedHashSet<>(Arrays.asList(new Number("1"), new Number("2"), new Number("3"))),
+                        new LinkedHashSet<>(Arrays.asList(new Number("6"), new Number("2"), new Number("3"))), 2),
+                arguments(new LinkedHashSet<>(Arrays.asList(new Number("1"), new Number("2"), new Number("3"))),
+                        new LinkedHashSet<>(Arrays.asList(new Number("7"), new Number("6"), new Number("3"))), 1),
+                arguments(new LinkedHashSet<>(Arrays.asList(new Number("1"), new Number("2"), new Number("3"))),
+                        new LinkedHashSet<>(Arrays.asList(new Number("4"), new Number("5"), new Number("6"))), 0)
+        );
     }
-
-    @Test
-    @DisplayName("숫자 리스트 두개를 받아. 각 순서와 숫자가 같은 수 인 스트라이크의 갯수를 반환")
-    public void strikeCount() {
-
-        assertThat(strike.countStrike()).isEqualTo(3);
-    }
-
-
 }
