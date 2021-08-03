@@ -7,7 +7,7 @@ import view.Input;
 
 public class GuessNumber {
     private InputNumbers inputNumbers;
-    private RandomBaseballNumbers randomNumbers;
+    private final RandomBaseballNumbers randomNumbers;
     private final BaseballController baseballController;
 
 
