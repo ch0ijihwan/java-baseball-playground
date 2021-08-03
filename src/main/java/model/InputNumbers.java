@@ -11,8 +11,7 @@ public class InputNumbers {
 
     public InputNumbers(String value) {
         values = new LinkedHashSet<>();
-        String[] numbers = dividedVales(value);
-        Arrays.stream(numbers)
+        Arrays.stream(dividedVales(value))
                 .forEach(number -> values.add(new Number(number)));
     }
 
