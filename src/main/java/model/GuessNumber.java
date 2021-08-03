@@ -27,7 +27,7 @@ public class GuessNumber {
 
             if (isThreeStrike(strikeCount)) break;
 
-            baseballController.sendOut(Ball.countBall(inputNumbers, randomNumbers), Strike.countStrike(inputNumbers, randomNumbers));
+            baseballController.guessResult(Ball.countBall(inputNumbers, randomNumbers), Strike.countStrike(inputNumbers, randomNumbers));
             checkInput = new InputNumbers(Input.InputBaseballNumber());
             this.inputNumbers = checkInput.checkInputNumber();
         }
