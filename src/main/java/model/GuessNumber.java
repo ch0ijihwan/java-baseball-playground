@@ -5,31 +5,29 @@ import model.score.Ball;
 import model.score.Strike;
 import view.Input;
 
-import java.util.Set;
-
 public class GuessNumber {
-    private Set<Number> inputNumbers;
-    private final Set<Number> randomNumbers;
+    private InputNumbers inputNumbers;
+    private RandomBaseballNumbers randomNumbers;
     private final BaseballController baseballController;
     InputNumbers checkInput;
 
-    public GuessNumber(Set<Number> inputNumbers, Set<Number> randomNumbers) {
-        baseballController = new BaseballController();
+    public GuessNumber(InputNumbers inputNumbers, RandomBaseballNumbers randomBaseballNumbers) {
         this.inputNumbers = inputNumbers;
-        this.randomNumbers = randomNumbers;
+        this.randomNumbers = randomBaseballNumbers;
+        baseballController = new BaseballController();
     }
 
     public void guessResult() {
         int strikeCount = 0;
 
         while (true) {
-            strikeCount = Strike.countStrike(inputNumbers, randomNumbers);
+            strikeCount = Strike.countStrike(inputNumbers.getInputNumbers(), randomNumbers.getRandomBaseballNumbers());
 
             if (isThreeStrike(strikeCount)) break;
 
-            baseballController.guessResult(Ball.countBall(inputNumbers, randomNumbers), Strike.countStrike(inputNumbers, randomNumbers));
+            baseballController.guessResult(Ball.countBall(inputNumbers.getInputNumbers(), randomNumbers.getRandomBaseballNumbers())
+                    , Strike.countStrike(inputNumbers.getInputNumbers(), randomNumbers.getRandomBaseballNumbers()));
             checkInput = new InputNumbers(Input.InputBaseballNumber());
-            this.inputNumbers = checkInput.checkInputNumber();
         }
     }
 
