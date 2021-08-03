@@ -11,10 +11,9 @@ public class InputNumbers {
 
     public InputNumbers(String value) {
         values = new LinkedHashSet<>();
-        int[] numbers = Arrays.stream(value.split("")).mapToInt(Integer::parseInt).toArray();
-
-        IntStream.range(0, 3)
-                .forEach(index -> values.add(new Number(numbers[index])));
+        String[] numbers = dividedVales(value);
+        Arrays.stream(numbers)
+                .forEach(number -> values.add(new Number(number)));
     }
 
     public Set<Number> getInputNumbers() {
@@ -30,5 +29,9 @@ public class InputNumbers {
 
     private boolean isValueSize() {
         return new HashSet<>(this.values).size() == 3;
+    }
+
+    private String[] dividedVales(String values){
+        return values.split(" ");
     }
 }
