@@ -19,10 +19,11 @@ class StrikeTest {
     @ParameterizedTest
     @MethodSource("strikeCountParameterProvider")
     @DisplayName("4가지 두 Set을 받아 스트라이크의 개수를 반환한다.")
-    public void getStrikeCount(Set<Number>inputNumbers, Set<Number> randomNumbers, int expect){
-        int count = Strike.countStrike(inputNumbers,randomNumbers);
+    public void getStrikeCount(Set<Number> inputNumbers, Set<Number> randomNumbers, int expect) {
+        int count = Strike.countStrike(inputNumbers, randomNumbers);
         assertThat(count).isEqualTo(expect);
     }
+
     static Stream<Arguments> strikeCountParameterProvider() {
         return Stream.of(arguments(new LinkedHashSet<>(Arrays.asList(new Number("1"), new Number("2"), new Number("3"))),
                         new LinkedHashSet<>(Arrays.asList(new Number("1"), new Number("2"), new Number("3"))), 3),
