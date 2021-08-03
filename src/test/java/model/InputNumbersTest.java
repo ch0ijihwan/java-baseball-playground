@@ -10,7 +10,7 @@ class InputNumbersTest {
     private InputNumbers inputNumbers;
 
     @ParameterizedTest
-    @CsvSource(value = {"1 1 1", "1 1 2", "1 2 1", "3 3 3"})
+    @CsvSource(value = {"111", "112", "121", "333"})
     @DisplayName("세가지의 수를 받고, 중복되는 수가 있을 경우 예외처리 반환")
     public void DuplicateCheckTest(String values) {
         inputNumbers = new InputNumbers(values);
