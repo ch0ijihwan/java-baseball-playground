@@ -18,7 +18,7 @@ class RandomBaseballNumbersTest {
     @DisplayName("숫자 야구 게임을 위한 무작위 난수 생성. 3자리 수 숫자 반환")
     public void makeNumber() {
         assertThat(makeRandomBaseball
-                .outRandomBaseballNumbers()
+                .getRandomBaseballNumbers()
                 .size()).isEqualTo(3);
     }
 }
