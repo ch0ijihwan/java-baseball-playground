@@ -13,6 +13,7 @@ public class InputNumbers {
         values = new LinkedHashSet<>();
         Arrays.stream(dividedVales(value))
                 .forEach(number -> values.add(new Number(number)));
+        checkInputNumber();
     }
 
     public Set<Number> getInputNumbers() {
@@ -29,7 +30,7 @@ public class InputNumbers {
         return new HashSet<>(this.values).size() == 3;
     }
 
-    private String[] dividedVales(String values){
+    private String[] dividedVales(String values) {
         return values.split("");
     }
 }
